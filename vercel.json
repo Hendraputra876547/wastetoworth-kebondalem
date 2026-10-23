@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.php",
+      "use": "vercel-php@0.9.0",
+      "config": {
+        "phpVersion": "8.5.5"
+      }
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(build|css|js|images|assets)/(.*)",
+      "dest": "/public/$1/$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
